@@ -1,1 +1,0 @@
-# mobx-react-app
