@@ -11,8 +11,10 @@ import { Provider } from 'mobx-react';
 
 import CounterStore from './stores/CounterStore';
 import TodoStore from './stores/TodoStore';
+import MovieStore from './stores/MovieStore';
 
 const stores = {
+    MovieStore,
     CounterStore,
     TodoStore
 };
