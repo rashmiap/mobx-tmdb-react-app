@@ -10,7 +10,7 @@ const Navigation = (props) => {
     <nav className="Nav">
       <NavLink activeClassName="Nav-active" exact to="/">
         <img src={movieNav} width={35} alt='movie logo'/>
-        <p className="Nav-text Nav-movies">Latest Movies</p>
+        <p className="Nav-text Nav-movies">Upcoming Movies</p>
       </NavLink>
       <NavLink activeClassName="Nav-active" to="/shows">
         <img src={showNav} width={35} alt='shows logo'/>
