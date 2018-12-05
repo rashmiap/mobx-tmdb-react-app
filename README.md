@@ -1,0 +1,1 @@
+# mobx-tmdb-react-app
