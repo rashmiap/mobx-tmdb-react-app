@@ -1,15 +1,18 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Counter from './Counter';
 import Todo from './Todo';
-import Header from './Header';
-import Navigation from './Navigation';
+import NoMatch from './NoMatch';
 
-const Main = (props) => (
-  <section className="Main">
-    <Header />
-    <div className="Main-content">
-      <Navigation />
-      <Todo />
-    </div>
-  </section>
-)
+const Main = (props) => {
+  return <main className="Movie-content">
+    <Switch>
+      <Route exact path='/' render={() => <Todo/>} />
+      <Route path='/movies' render={() => <Counter {...props} />} />
+      <Route path='/shows' render={() => <Todo {...props}/>} />
+      <Route component={NoMatch} />
+    </Switch>
+  </main>
+}
+
 export default Main;
