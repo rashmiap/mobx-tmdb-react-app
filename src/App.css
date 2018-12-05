@@ -1,0 +1,41 @@
+.Todo{
+  /* box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2); */
+  width: 35%;
+  box-sizing: border-box;
+  margin: 5% auto;
+  padding: 25px;
+  background: #fff;
+}
+.create{
+    background-color: #fff;
+    background-position: right 8px center;
+    background-repeat: no-repeat;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px rgba(27,31,35,.075);
+    color: #24292e;
+    font-size: 16px;
+    line-height: 20px;
+    min-height: 34px;
+    outline: none;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    display: flex;
+    width: 70%;
+}
+.Todo-form{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.Todo-actions{
+  display: flex;
+  justify-content: space-between;
+}
+.Todo-clear{
+  display: flex;
+  cursor: pointer;
+}
+.Todo-clear p {
+  padding: 5px
+}
