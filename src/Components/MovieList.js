@@ -32,7 +32,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
             <CircularProgress size={150} thickness={2}/>
       </div>;
     }
-    
+
     return (
       <div className="movie-listing">
         <h1>Upcoming movies</h1>

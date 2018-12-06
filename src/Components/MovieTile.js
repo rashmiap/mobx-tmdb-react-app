@@ -10,9 +10,10 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import { cardTileStyles } from '../Styles/styles';
+import { inject, observer } from 'mobx-react';
 
-const MovieTile = (props) => {
-  const { classes, movies, i, movieType } = props;
+var MovieTile = inject("MovieStore")(observer((props) => {
+  const { classes, movies, i } = props;
   return <Card className={classes.card}>
         <CardMedia
           className={classes.media}
@@ -27,8 +28,28 @@ const MovieTile = (props) => {
             {movies[i].overview}
           </Typography>
         </CardContent>
+         <CardActions className={classes.actions}>
+           <Button component={Link} to={`/view/${movies[i].id}`} className={classes.linker} color="primary">
+             See More
+           </Button>
+           {
+             props.movies[i].saved ?
+           <Button aria-label="Saved" className={classes.button} onClick={() => props.MovieStore.toggleSave(movies[i].id)}>
+             <Icon className={classes.icon} style={cardTileStyles.saveIcon}>
+                 favorite
+             </Icon>
+           </Button>
+           :
+           <Button aria-label="Save" className={classes.button} onClick={() => props.MovieStore.toggleSave(movies[i].id)}>
+             <Icon className={classes.icon} style={cardTileStyles.saveIcon}>
+                 favorite_border
+             </Icon>
+           </Button>}
+         </CardActions>
       </Card>
-}
+}));
+
+
 MovieTile.propTypes = {
   classes: PropTypes.object.isRequired,
 };

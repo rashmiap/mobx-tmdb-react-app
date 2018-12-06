@@ -29,6 +29,9 @@ export class MovieStore {
         console.log("Error is fetching movies", error)
       });
     }
+    toggleSave(val){
+      console.log(val);
+    }
 }
 
 export default new MovieStore();
