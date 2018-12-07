@@ -12,26 +12,21 @@ import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 
 
-@inject('MovieStore')
+@inject('MovieStore', 'CastStore')
 @withRouter
 @observer
 export default class MovieDetail extends Component {
-  constructor(props){
-    super(props);
 
-  }
   componentDidMount(){
     window.scrollTo(0,0);
     console.log(this.props.match.params.postId, 'ssa');
     const movieId = this.props.match.params.postId;
-
-    //this.props.fetchCurrentMovie(movieId, this.props.movies);
-    //this.props.fetchCastData(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=28967d69513d49d94603253876b995a8`);
+    this.props.CastStore.fetchCastData(movieId);
   }
   __renderCast(){
     let renderCastBlock = [];
-    renderCastBlock = this.props.castDetails.cast !== undefined ?
-     this.props.castDetails.cast.map((item, index) => {
+    renderCastBlock = this.props.CastStore.cast !== undefined ?
+     this.props.CastStore.cast.map((item, index) => {
        return (
         <div key={item.credit_id} className="cast-single">
           <div className="cast-single__header"
@@ -49,7 +44,21 @@ export default class MovieDetail extends Component {
     return renderCastBlock;
   }
   render(){
-    const { movies, isLoading, isError } = this.props.MovieStore;
+    const { movies } = this.props.MovieStore;
+    const { isLoading, isError } = this.props.CastStore;
+
+    if (isError) {
+      return <div className="movie-listing__error">
+          <h3> Oops! There was an error loading the cast details </h3>
+      </div>
+    }
+
+    if (isLoading) {
+      return <div className="movie-listing__error">
+            <CircularProgress size={150} thickness={2}/>
+      </div>;
+    }
+
     const movieId = this.props.match.params.postId;
     const currentMovie = movies.find(obj => obj.id == movieId);
     return(
@@ -63,7 +72,7 @@ export default class MovieDetail extends Component {
             <div className="details-body">
               <div className="details-content">
                 <div className="details-saver">
-                  <h2>{currentMovie.title}</h2>
+                  <h2>{currentMovie.original_title}</h2>
                   {
                     currentMovie.saved ?
                     <Button aria-label="Saved" size={'large'} onClick={() => this.props.MovieStore.toggleSave(currentMovie.id)}>
@@ -98,6 +107,7 @@ export default class MovieDetail extends Component {
             </div>
             <div className="details-cast">
               <p style={cardDetails.castText}>Full Cast</p>
+              {this.__renderCast()}
             </div>
           </div>
           : <p>Wait for it</p>
