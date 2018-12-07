@@ -6,8 +6,12 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 @inject('MovieStore')
 @observer class MovieList extends Component {
   componentDidMount(){
-    this.props.MovieStore.fetchMovies();
+    window.scrollTo(0,0);
+    if(Object.keys(this.props.MovieStore.movies).length == 0){
+      this.props.MovieStore.fetchMovies();
+    }
   }
+
   renderTiles(){
     let renderBlock = [];
     renderBlock = this.props.MovieStore.movies !== undefined ?
