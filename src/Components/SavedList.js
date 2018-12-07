@@ -18,7 +18,7 @@ export default class SavedList extends Component {
     .map((item, key) => {
       if (item.saved === true) {
         return(
-          <MovieTile key={key} {...this.props} movies={this.props.MovieStore.movies} i={key} movieType={'movies'}/>
+          <MovieTile key={key} {...this.props} movies={this.props.MovieStore.movies} i={key} />
         )
       }
       return [];
