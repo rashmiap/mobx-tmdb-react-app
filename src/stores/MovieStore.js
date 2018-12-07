@@ -29,8 +29,11 @@ export class MovieStore {
         console.log("Error is fetching movies", error)
       });
     }
-    toggleSave(val){
-      console.log(val);
+    @action toggleSave(index){
+      var obj = this.movies.filter(function ( obj ) {
+      return obj.id === index;
+      })[0];
+      obj.saved = !obj.saved;
     }
 }
 

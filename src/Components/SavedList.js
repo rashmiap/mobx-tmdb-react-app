@@ -3,6 +3,7 @@ import MovieTile from './MovieTile';
 import { inject, observer } from 'mobx-react';
 
 @inject('MovieStore')
+@observer
 export default class SavedList extends Component {
   constructor(props){
     super(props);
