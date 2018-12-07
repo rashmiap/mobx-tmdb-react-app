@@ -85,7 +85,7 @@
   border-left: 1px solid rgba(0, 0, 0, 0.12);
 }
 .movie-listing h1{
-  color: white; 
+  color: white;
 }
 .movie-listing__blocks{
   display: flex;
@@ -197,5 +197,9 @@
   }
   .movie-listing__blocks >div{
     margin-right: 0;
+  }
+  .movie-listing__filter{
+    flex-direction: column;
+    padding: 0 0 10%;
   }
 }
