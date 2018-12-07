@@ -35,6 +35,10 @@ export class MovieStore {
       })[0];
       obj.saved = !obj.saved;
     }
+    @computed get filteredMovie(){
+      var matchesFilter = new RegExp(this.filter, "i");
+      return this.movies.filter(todo => !this.filter || matchesFilter.test(todo.original_title))
+    }
 }
 
 export default new MovieStore();

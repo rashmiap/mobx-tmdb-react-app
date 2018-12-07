@@ -7,7 +7,15 @@ export const headerStyles = {
   },
   appBar: {
     backgroundColor: '#000',
-    padding: '10px 0',
+    padding: '0',
+  },
+  headerBar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  mainLogo: {
+    padding: '0 20px'
   }
 };
 
@@ -65,3 +73,9 @@ export const cardDetails = {
     width: '100%',
   }
 }
+export const FilterStyles = {
+  inputBox: {
+    backgroundColor: 'white',
+    borderRadius: 4,
+  }
+};

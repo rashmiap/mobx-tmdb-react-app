@@ -84,6 +84,9 @@
   min-height: 84vh;
   border-left: 1px solid rgba(0, 0, 0, 0.12);
 }
+.movie-listing h1{
+  color: white; 
+}
 .movie-listing__blocks{
   display: flex;
   flex-wrap: wrap;
@@ -160,6 +163,14 @@
 .movie-listing__header{
   border-top: 1px solid #ccc;
   padding-top: 40px;
+}
+.movie-listing__filter{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.movie-listing__filter h1{
+  color: white;
 }
 .movie-listing .no-saved{
   margin: 0;
