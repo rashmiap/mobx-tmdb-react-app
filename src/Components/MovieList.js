@@ -3,6 +3,8 @@ import { inject, observer } from 'mobx-react';
 import MovieTile from './MovieTile';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
+import { FilterStyles } from '../Styles/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 @inject('MovieStore')
 @observer class MovieList extends Component {
@@ -12,7 +14,6 @@ import TextField from '@material-ui/core/TextField';
       this.props.MovieStore.fetchMovies();
     }
   }
-
   renderTiles(){
     let renderBlock = [];
     renderBlock = this.props.MovieStore.filteredMovie !== undefined ?
@@ -29,6 +30,7 @@ import TextField from '@material-ui/core/TextField';
   }
   render() {
     const { movies, isLoading, isError, filter } = this.props.MovieStore;
+    const { classes } = this.props;
 
     if (isError) {
       return <div className="movie-listing__error">
@@ -40,12 +42,12 @@ import TextField from '@material-ui/core/TextField';
             <CircularProgress size={150} thickness={2}/>
       </div>;
     }
-
     return (
       <div className="movie-listing">
         <div className="movie-listing__filter">
           <h1>Upcoming movies</h1>
-          <TextField id="movie-filter" variant="outlined" value={filter} onChange={this.handleFilter.bind(this)}  placeholder={'Search for a movie'}/>
+          <TextField id="movie-filter" variant="outlined"  className={classes.inputBox}
+           value={filter} onChange={this.handleFilter.bind(this)}  placeholder={'Search for a movie'}/>
         </div>
         <div className="movie-listing__blocks">
           {this.renderTiles()}
@@ -54,5 +56,4 @@ import TextField from '@material-ui/core/TextField';
     )
   }
 }
-
-export default MovieList;
+export default withStyles(FilterStyles)(MovieList);

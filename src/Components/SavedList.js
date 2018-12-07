@@ -30,7 +30,7 @@ export default class SavedList extends Component {
   render(){
     return(
       <div className="movie-listing">
-        <h3>Saved Upcoming Movies</h3>
+        <h1>Saved Upcoming Movies</h1>
         <div className="movie-listing__blocks">
             {this.__renderMovies()}
         </div>
