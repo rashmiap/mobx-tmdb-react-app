@@ -13,17 +13,15 @@ import { Provider } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { Router } from 'react-router';
 
-import CounterStore from './stores/CounterStore';
-import TodoStore from './stores/TodoStore';
 import MovieStore from './stores/MovieStore';
+import CastStore from './stores/CastStore';
 
 const browserHistory = createBrowserHistory();
 const routingStore = new RouterStore();
 
 const stores = {
     MovieStore,
-    CounterStore,
-    TodoStore,
+    CastStore,
     routing: routingStore,
 };
 const history = syncHistoryWithStore(browserHistory, routingStore);
