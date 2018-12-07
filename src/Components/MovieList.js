@@ -17,7 +17,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
     renderBlock = this.props.MovieStore.movies !== undefined ?
      this.props.MovieStore.movies.map((key, index) => {
        return (
-         <MovieTile key={index} {...this.props} movies={this.props.MovieStore.movies} i={index} movieType={'movies'}/>
+         <MovieTile key={index} {...this.props} movies={this.props.MovieStore.movies} i={index} />
        );
      })
      : [];
